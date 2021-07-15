@@ -4,7 +4,7 @@ using IPALogger = IPA.Logging.Logger;
 
 namespace NoHealthAndSafety
 {
-    [Plugin(RuntimeOptions.SingleStartInit)]
+    [Plugin(RuntimeOptions.DynamicInit)]
     public class Plugin
     {
         public static string PluginName => "NoHealthAndSafety";
@@ -18,14 +18,14 @@ namespace NoHealthAndSafety
             _harmony = new Harmony(_harmonyID);
         }
 
-        [OnStart]
-        public void OnApplicationStart()
+        [OnEnable]
+        public void OnEnable()
         {
             _harmony.PatchAll();
         }
 
-        [OnExit]
-        public void OnApplicationQuit()
+        [OnDisable]
+        public void OnDisable()
         {
             _harmony.UnpatchAll(_harmonyID);
         }
