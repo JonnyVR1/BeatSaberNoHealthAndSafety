@@ -1,6 +1,4 @@
 ﻿using IPA;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using IPALogger = IPA.Logging.Logger;
 
 namespace NoHealthAndSafety
@@ -16,22 +14,13 @@ namespace NoHealthAndSafety
         [OnStart]
         public void OnApplicationStart()
         {
-            SceneManager.activeSceneChanged += OnActiveSceneChanged;
+
         }
 
         [OnExit]
         public void OnApplicationQuit()
         {
-            SceneManager.activeSceneChanged -= OnActiveSceneChanged;
-        }
 
-        public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
-        {
-            if (nextScene.name == "HealthWarning")
-            {
-                new GameObject("ButtonPresser").AddComponent<ButtonPresser>();
-            }
         }
-
     }
 }
