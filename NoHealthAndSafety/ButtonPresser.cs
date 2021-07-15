@@ -8,9 +8,10 @@ namespace NoHealthAndSafety
     {
         private IEnumerator clickIt()
         {
-            yield return new WaitForSeconds(.3f);
-            foreach (Button button in Resources.FindObjectsOfTypeAll<Button>())
+            yield return new WaitForSeconds(.5f);
+            foreach (HMUI.NoTransitionsButton button in FindObjectsOfType<HMUI.NoTransitionsButton>())
             {
+                //Resources.FindObjectsOfTypeAll<HMUI.NoTransitionsButton>()
                 if (button.name == "Continue")
                 {
                     button.onClick.Invoke();

@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HMUI">
+      <HintPath>..\..\..\..\..\..\Games\steamapps\common\Beat Saber\Beat Saber_Data\Managed\HMUI.dll</HintPath>
+    </Reference>
     <Reference Include="IPA.Injector">
       <HintPath>..\..\..\..\..\..\Games\steamapps\common\Beat Saber\IPA\Data\Managed\IPA.Injector.dll</HintPath>
     </Reference>
