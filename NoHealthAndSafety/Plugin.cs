@@ -1,37 +1,33 @@
-﻿using IPA;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using HarmonyLib;
+using IPA;
 using IPALogger = IPA.Logging.Logger;
 
 namespace NoHealthAndSafety
 {
-    [Plugin(RuntimeOptions.SingleStartInit)]
+    [Plugin(RuntimeOptions.DynamicInit)]
     public class Plugin
     {
         public static string PluginName => "NoHealthAndSafety";
+        private static readonly string _harmonyID = $"com.Mystogan.{PluginName}";
+        private readonly Harmony _harmony;
 
         [Init]
-        public void Init(IPALogger logger) { Logger.log = logger; }
-
-        [OnStart]
-        public void OnApplicationStart()
+        public Plugin(IPALogger logger)
         {
-            SceneManager.activeSceneChanged += OnActiveSceneChanged;
+            Logger.log = logger;
+            _harmony = new Harmony(_harmonyID);
         }
 
-        [OnExit]
-        public void OnApplicationQuit()
+        [OnEnable]
+        public void OnEnable()
         {
-            SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+            _harmony.PatchAll();
         }
 
-        public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
+        [OnDisable]
+        public void OnDisable()
         {
-            if (nextScene.name == "HealthWarning")
-            {
-                new GameObject("ButtonPresser").AddComponent<ButtonPresser>();
-            }
+            _harmony.UnpatchAll(_harmonyID);
         }
-
     }
 }
