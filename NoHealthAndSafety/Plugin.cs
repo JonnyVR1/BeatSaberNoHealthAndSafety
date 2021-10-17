@@ -8,14 +8,14 @@ namespace NoHealthAndSafety
     public class Plugin
     {
         public static string PluginName => "NoHealthAndSafety";
-        private static readonly string _harmonyID = $"com.Mystogan.{PluginName}";
+        private static readonly string HarmonyID = $"com.Mystogan.{PluginName}";
         private readonly Harmony _harmony;
 
         [Init]
         public Plugin(IPALogger logger)
         {
-            Logger.log = logger;
-            _harmony = new Harmony(_harmonyID);
+            Logger.Log = logger;
+            _harmony = new Harmony(HarmonyID);
         }
 
         [OnEnable]
@@ -27,7 +27,7 @@ namespace NoHealthAndSafety
         [OnDisable]
         public void OnDisable()
         {
-            _harmony.UnpatchAll(_harmonyID);
+            _harmony.UnpatchAll(HarmonyID);
         }
     }
 }
