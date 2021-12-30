@@ -2,10 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/nike4613/ModSaber-MetadataFileSchema/master/Schema.json",
   "author": "Mystogan",
   "description": "Skips the Health and Safety warning screen",
-  "gameVersion": "1.18.1",
+  "gameVersion": "1.19.0",
   "id": "NoHealthAndSafety",
   "name": "NoHealthAndSafety",
-  "version": "1.18.1",
+  "version": "1.19.0",
   "dependsOn": {
     "BSIPA": "^4.2.0"
   },

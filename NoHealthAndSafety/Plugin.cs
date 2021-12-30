@@ -27,7 +27,7 @@ namespace NoHealthAndSafety
         [OnDisable]
         public void OnDisable()
         {
-            _harmony.UnpatchAll(HarmonyID);
+            _harmony.UnpatchSelf();
         }
     }
 }
